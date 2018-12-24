@@ -8,6 +8,7 @@ import RestaurantDashboard from "../../features/restaurant/RestaurantDashboard/R
 import RestaurantDetailedPage from "../../features/restaurant/RestaurantDetailed/RestaurantDetailedPage";
 import UserDetailedPage from "../../features/user/UserDetailedPage/UserDetailedPage";
 import SettingsDashboard from "../../features/user/Settings/SettingsDashboard";
+import TestComponent from "../../features/testarea/TestComponent";
 
 class App extends Component {
   render() {
@@ -25,6 +26,7 @@ class App extends Component {
               <Container className="main">
                 <Switch>
                   <Route path="/restaurants" component={RestaurantDashboard} />
+                  <Route path="/test" component={TestComponent} />
                   <Route
                     path="/restaurant/:id"
                     component={RestaurantDetailedPage}

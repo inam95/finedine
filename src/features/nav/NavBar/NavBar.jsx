@@ -40,6 +40,7 @@ class NavBar extends Component {
             <h2 className="brand">FineDine</h2>
           </Menu.Item>
           <Menu.Item as={NavLink} to="/restaurants" name="Events" />
+          <Menu.Item as={NavLink} to="/test" name="Test" />
           <Menu.Item>
             {authenticate && (
               <Button
