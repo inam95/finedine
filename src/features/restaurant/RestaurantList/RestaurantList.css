@@ -1,0 +1,104 @@
+.restaurant-list {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  margin: 0;
+}
+
+.restaurant-list_item {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  width: 100%;
+  /* border: 1px solid #000; */
+  box-shadow: 1px 2px 1px #000;
+}
+
+.restaurant-header {
+  position: relative;
+  display: flex;
+  margin: 1.5rem 2rem 0 2rem;
+  height: 10rem;
+  align-items: center;
+}
+
+.restaurant-image {
+  background: url("https://randomuser.me/api/portraits/men/42.jpg") no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 0.625rem;
+}
+
+.restaurant-info {
+  margin: 0 3rem;
+}
+
+.restaurant-info a {
+  margin: 0.5rem 0;
+  padding: 0;
+  color: #14165a;
+  font-weight: 700;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.restaurant-info h5 {
+  margin: 0.5rem 0;
+  padding: 0;
+  color: #767677;
+  font-weight: 500;
+}
+.restaurant-rate-block {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.restaurant-rate-block .rate {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  background: #10ca4e;
+  font-size: 0.825rem;
+  border-radius: 0.825rem;
+  color: #f1f1f1;
+  font-weight: 800;
+}
+
+.restaurant-rate-block .votes {
+  margin: 0 0.5rem;
+  padding: 0;
+  font-size: 0.825rem;
+}
+
+.restaurant-footer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0 2rem 1.5rem 2rem;
+  align-items: flex-start;
+}
+
+.restaurant-footer .footer-row {
+  display: flex;
+  text-align: justify;
+  align-content: flex-start;
+  padding: 0 1.5rem;
+}
+
+.footer-row .label {
+  width: 25%;
+}
+
+.footer-row .desc {
+  width: 70%;
+}
+
+hr {
+  width: 90%;
+  margin: 1rem auto;
+  border-top: 1px solid #000;
+}
