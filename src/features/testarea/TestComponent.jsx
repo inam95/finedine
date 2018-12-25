@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button, Icon } from "semantic-ui-react";
-import Script from "react-load-script";
+// import Script from "react-load-script";
 import GoogleMapReact from "google-map-react";
 import PlacesAutocomplete, {
   geocodeByAddress,
@@ -23,8 +23,8 @@ const Marker = () => <Icon name="marker" size="big" color="red" />;
 class TestComponent extends Component {
   static defaultProps = {
     center: {
-      lat: 59.95,
-      lng: 30.33
+      lat: 7.2875,
+      lng: 80.6231
     },
     zoom: 11
   };
@@ -58,10 +58,10 @@ class TestComponent extends Component {
     const { incrementCounter, decrementCounter, data } = this.props;
     return (
       <div>
-        <Script
-          url="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoXsgVmiXsx-Xx1rQEHgbZ-iJ7aCrYaEs&libraries=places"
+        {/* <Script
+          url="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeEzBoEcZ4UO2iqBK55gfJoXfdx_ZFVa8&libraries=places"
           onLoad={this.handleScriptLoad}
-        />
+        /> */}
         <h1>Test Area</h1>
         <h3>The answer is: {data}</h3>
         <Button onClick={incrementCounter} color="green" content="Increment" />
@@ -74,17 +74,17 @@ class TestComponent extends Component {
           )}
           <button type="submit">Submit</button>
         </form>
-        {/* <div style={{ height: "300px", width: "100%" }}>
+        <div style={{ height: "300px", width: "100%" }}>
           <GoogleMapReact
             bootstrapURLKeys={{
-              key: "AIzaSyCTN8X_q_xtMYCnacteF4ZQj0RKXodI080"
+              key: "AIzaSyBeEzBoEcZ4UO2iqBK55gfJoXfdx_ZFVa8"
             }}
             defaultCenter={this.props.center}
             defaultZoom={this.props.zoom}
           >
-            <Marker lat={59.955413} lng={30.337844} text={"Kreyser Avrora"} />
+            <Marker lat={7.2875} lng={80.6231} text={"Kreyser Avrora"} />
           </GoogleMapReact>
-        </div> */}
+        </div>
       </div>
     );
   }

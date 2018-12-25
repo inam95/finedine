@@ -12,6 +12,10 @@ const initialState = [
     },
     tbr: true,
     avg_cost: 1000,
+    placeLatLng: {
+      lat: 7.2875,
+      lng: 80.6231
+    },
     likes: 150,
     rate: 4.2,
     votes: 147,
@@ -30,6 +34,10 @@ const initialState = [
     },
     tbr: true,
     avg_cost: 1000,
+    placeLatLng: {
+      lat: 7.28,
+      lng: 80.6192
+    },
     likes: 150,
     rate: 3.7,
     votes: 100,
