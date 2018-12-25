@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import "./RestaurantList.css";
 
@@ -11,7 +12,7 @@ class RestaurantListItem extends Component {
         <div className="restaurant-header">
           <div className="restaurant-image" />
           <div className="restaurant-info">
-            <a href="">{restaurant.name}</a>
+            <Link to={`/restaurant/${restaurant.id}`}>{restaurant.name}</Link>
             <h5>{restaurant.address.street}</h5>
             <div className="restaurant-rate-block">
               <p className="rate">{restaurant.rate}</p>
