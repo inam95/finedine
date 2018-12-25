@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import RestaurantDetailedDashboard from "./RestaurantDetailedDashboard";
 
@@ -10,13 +11,13 @@ const RestaurantDetailedNav = ({ restaurant }) => {
       <nav>
         <ul>
           <li>
-            <a href="">Overview</a>
+            <Link to={`/restaurant/${restaurant.id}/overview`}>Overview</Link>
           </li>
           <li>
-            <a href="">Reviews</a>
+            <Link to={`/restaurant/${restaurant.id}/reviews`}>Reviews</Link>
           </li>
           <li>
-            <a href="">Menu</a>
+            <Link to={`/restaurant/${restaurant.id}/menu`}>Menu</Link>
           </li>
         </ul>
       </nav>
