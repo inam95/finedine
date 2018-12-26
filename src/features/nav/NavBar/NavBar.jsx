@@ -6,13 +6,11 @@ import { withFirebase } from "react-redux-firebase";
 import SignedOutMenu from "./Menus/SignedOutMenu";
 import SignedInMenu from "./Menus/SignedInMenu";
 import { openModal } from "../../modals/modalActions";
-import { logout } from "../../auth/authActions";
 
 import "./NavBar.css";
 
 const actions = {
-  openModal,
-  logout
+  openModal
 };
 
 const mapState = state => ({

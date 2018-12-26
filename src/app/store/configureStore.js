@@ -1,15 +1,16 @@
 import { createStore, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { reactReduxFirebase, getFirebase } from "react-redux-firebase";
 import { reduxFirestore, getFirestore } from "redux-firestore";
-import firebase from "../config/firebase";
+import thunk from "redux-thunk";
 import rootReducer from "../reducers/rootReducer";
+import firebase from "../config/firebase";
 
-const rrfconfig = {
-  userProfile: "user",
+const rrfConfig = {
+  userProfile: "users",
   attachAuthIsReady: true,
-  useFiresotreForProfile: true
+  useFirestoreForProfile: true,
+  updateProfileOnLogin: false
 };
 
 export const configureStore = preloadedState => {
@@ -20,7 +21,7 @@ export const configureStore = preloadedState => {
 
   const composedEnhancer = composeWithDevTools(
     ...storeEnhancers,
-    reactReduxFirebase(firebase, rrfconfig),
+    reactReduxFirebase(firebase, rrfConfig),
     reduxFirestore(firebase)
   );
 
