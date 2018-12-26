@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { reducer as FormReducer } from 'redux-form'
-
+import { reducer as toastrReducer } from 'react-redux-toastr'
 import testReducer from '../../features/testarea/testReducer';
 import restaurantReducer from '../../features/restaurant/restaurantReducer'
 import modalsReducer from '../../features/modals/modalReducer'
@@ -13,7 +13,8 @@ const rootReducer = combineReducers({
     restaurants: restaurantReducer,
     modals: modalsReducer,
     auth: authReducer,
-    async: asyncReducer
+    async: asyncReducer,
+    toastr: toastrReducer
 });
 
 export default rootReducer;
