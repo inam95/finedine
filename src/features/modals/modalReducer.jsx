@@ -8,7 +8,7 @@ export const openModal = (state, payload) => {
   return { modalType, modalProps };
 };
 
-export const closeModal = () => {
+export const closeModal = (state, payload) => {
   return null;
 };
 
