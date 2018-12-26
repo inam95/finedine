@@ -12,7 +12,7 @@ const Home = ({ history }) => {
               alt="logo"
             />
             <div className="content">
-              <h2 style={{ fontFamily: "Titan One" }}>FineDine</h2>
+              <h2 style={{ fontFamily: "Original Surfer" }}>FineDine</h2>
             </div>
           </h1>
           <h2>Explore Restaurants</h2>

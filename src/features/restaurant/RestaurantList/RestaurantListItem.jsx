@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { Icon } from "semantic-ui-react";
 
 import "./RestaurantList.css";
 
@@ -15,8 +16,12 @@ class RestaurantListItem extends Component {
             <Link to={`/restaurant/${restaurant.id}`}>{restaurant.name}</Link>
             <h5>{restaurant.address.street}</h5>
             <div className="restaurant-rate-block">
-              <p className="rate">{restaurant.rate}</p>
-              <p className="votes"> / {restaurant.votes} votes</p>
+              <Icon
+                name="thumbs up"
+                size="large"
+                style={{ color: "#07a355" }}
+              />
+              <p className="votes">{restaurant.likes} likes</p>
             </div>
           </div>
         </div>

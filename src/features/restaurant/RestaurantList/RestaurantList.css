@@ -55,23 +55,6 @@
 .restaurant-rate-block {
   position: relative;
   display: flex;
-  align-items: center;
-}
-
-.restaurant-rate-block .rate {
-  margin: 0;
-  padding: 0.5rem 1rem;
-  background: #10ca4e;
-  font-size: 0.825rem;
-  border-radius: 0.825rem;
-  color: #f1f1f1;
-  font-weight: 800;
-}
-
-.restaurant-rate-block .votes {
-  margin: 0 0.5rem;
-  padding: 0;
-  font-size: 0.825rem;
 }
 
 .restaurant-footer {
