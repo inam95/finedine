@@ -22,11 +22,7 @@ let render = () => {
     <Provider store={store}>
       <BrowserRouter>
         <ScrollToTop>
-          <ReduxToastr
-            position="bottom-right"
-            transitionIn="fadeIn"
-            transitionOut="fadeOut"
-          />
+          <ReduxToastr position="bottom-right" transitionIn="fadeIn" transitionOut="fadeOut" />
           <App />
         </ScrollToTop>
       </BrowserRouter>
@@ -42,7 +38,9 @@ if (module.hot) {
   });
 }
 
-render();
+store.firebaseAuthIsReady.then(() => {
+  render();
+});
 
 // ReactDOM.render(<App />, document.getElementById('root'));
 
