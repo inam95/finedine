@@ -2,14 +2,17 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import RestaurantList from "../RestaurantList/RestaurantList";
+import LoadingComponent from "../../../app/layout/LoadingComponent";
 
 const mapState = state => ({
-  restaurants: state.restaurants
+  restaurants: state.restaurants,
+  loading: state.async.loading
 });
 
 class RestaurantDashboard extends Component {
   render() {
-    const { restaurants } = this.props;
+    const { restaurants, loading } = this.props;
+    if (loading) return <LoadingComponent inverted={true} />;
     return (
       <div className="container">
         <RestaurantList restaurants={restaurants} />
