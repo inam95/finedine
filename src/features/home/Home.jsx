@@ -11,9 +11,11 @@ const Home = ({ history }) => {
               src="/assets/logo2.png"
               alt="logo"
             />
-            <div className="content">Re-vents</div>
+            <div className="content">
+              <h2 style={{ fontFamily: "Titan One" }}>FineDine</h2>
+            </div>
           </h1>
-          <h2>Do whatever you want to do</h2>
+          <h2>Explore Restaurants</h2>
           <div
             onClick={() => history.push("/restaurants")}
             className="ui huge white inverted button"
