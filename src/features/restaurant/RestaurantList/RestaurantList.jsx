@@ -9,9 +9,10 @@ class RestaurantList extends Component {
 
     return (
       <div className="restaurant-list">
-        {restaurants.map(restaurant => (
-          <RestaurantListItem key={restaurant.id} restaurant={restaurant} />
-        ))}
+        {restaurants &&
+          restaurants.map(restaurant => (
+            <RestaurantListItem key={restaurant.id} restaurant={restaurant} />
+          ))}
       </div>
     );
   }

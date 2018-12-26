@@ -8,9 +8,7 @@ const RestaurantDetailedHeader = ({ restaurant }) => {
     <div className="detail-header">
       <div className="detail-image">
         <div className="restaurant_name">
-          <h2>
-            {restaurant.name} | {restaurant.address.city}
-          </h2>
+          <h2>|</h2>
         </div>
         {/* <div className="restaurant-rate_block" /> */}
         <div className="action_block">

@@ -11,10 +11,7 @@ const RestaurantDetailedFooter = ({ restaurant }) => {
       <div className="detail_info">
         <RestaurantDetailedNav restaurant={restaurant} />
         <div className="map">
-          <RestaurantDetailedMap
-            lat={restaurant.placeLatLng.lat}
-            lng={restaurant.placeLatLng.lng}
-          />
+          <RestaurantDetailedMap lat={7} lng={8} />
         </div>
       </div>
     </div>
