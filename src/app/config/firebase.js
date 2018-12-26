@@ -6,7 +6,7 @@ const firebaseConfig = {
   authDomain: "finedine-inam95.firebaseapp.com",
   databaseURL: "https://finedine-inam95.firebaseio.com",
   projectId: "finedine-inam95",
-  storageBucket: "",
+  storageBucket: "finedine-inam95.appspot.com",
   messagingSenderId: "348042232274"
 };
 
