@@ -9,11 +9,13 @@ import RestaurantDetailedPage from "../../features/restaurant/RestaurantDetailed
 import UserDetailedPage from "../../features/user/UserDetailedPage/UserDetailedPage";
 import SettingsDashboard from "../../features/user/Settings/SettingsDashboard";
 import TestComponent from "../../features/testarea/TestComponent";
+import ModalManager from "../../features/modals/ModalManager";
 
 class App extends Component {
   render() {
     return (
       <div>
+        <ModalManager />
         <Switch>
           <Route exact path="/" component={Home} />
         </Switch>
