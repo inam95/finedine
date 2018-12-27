@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Icon } from "semantic-ui-react";
 
 import "./RestaurantList.css";
+import { objectLength } from "../../../app/common/util/helpers";
 
 class RestaurantListItem extends Component {
   render() {
@@ -24,7 +25,7 @@ class RestaurantListItem extends Component {
             <h5>{restaurant.venue}</h5>
             <div className="restaurant-rate-block">
               <Icon name="thumbs up" size="large" style={{ color: "#07a355" }} />
-              <p className="votes">{restaurant.likes} likes</p>
+              <p className="votes">{restaurant && restaurant.likedBy && objectLength(restaurant.likedBy)} likes</p>
             </div>
           </div>
         </div>

@@ -29,11 +29,9 @@ class App extends Component {
                 <Switch>
                   <Route path="/restaurants" component={RestaurantDashboard} />
                   <Route path="/test" component={TestComponent} />
-                  <Route
-                    path="/restaurant/:id"
-                    component={RestaurantDetailedPage}
-                  />
+                  <Route path="/restaurant/:id" component={RestaurantDetailedPage} />
                   <Route path="/profile" component={UserDetailedPage} />
+                  {/* <Route path="/restaurant/:id/photos" component={PhotosPage} /> */}
                   <Route path="/settings" component={SettingsDashboard} />
                 </Switch>
               </Container>

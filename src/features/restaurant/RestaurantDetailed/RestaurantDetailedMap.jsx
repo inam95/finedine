@@ -4,10 +4,8 @@ import GoogleMapReact from "google-map-react";
 
 const Marker = () => <Icon name="marker" size="big" color="red" />;
 
-const RestaurantDetailedMap = ({ restaurant }) => {
-  // const lat = placeLatLng[0];
-  // const lng = placeLatLng[1];
-  const center = [7, 8];
+const RestaurantDetailedMap = ({ lat, lng }) => {
+  const center = [lat, lng];
   const zoom = 10;
   return (
     <React.Fragment>
@@ -18,7 +16,7 @@ const RestaurantDetailedMap = ({ restaurant }) => {
         defaultCenter={center}
         defaultZoom={zoom}
       >
-        <Marker lat={7} lng={8} />
+        <Marker lat={lat} lng={lng} />
       </GoogleMapReact>
     </React.Fragment>
   );

@@ -1,9 +1,11 @@
 import React from "react";
 import { Button, Label, Icon } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 import "./RestaurantDetailed.css";
+import { objectLength } from "../../../app/common/util/helpers";
 
-const RestaurantDetailedHeader = ({ restaurant }) => {
+const RestaurantDetailedHeader = ({ restaurant, isLike, likePlace, isBookmarked, bookMarkPlace }) => {
   return (
     <div className="detail-header">
       <div
@@ -21,18 +23,24 @@ const RestaurantDetailedHeader = ({ restaurant }) => {
         </div>
         {/* <div className="restaurant-rate_block" /> */}
         <div className="action_block">
-          <Button inverted content="Bookmark" icon="bookmark outline" />
-          <Button as="div" labelPosition="right">
-            <Button icon inverted>
+          <Button
+            onClick={() => bookMarkPlace(restaurant)}
+            disabled={isBookmarked}
+            inverted
+            content="Bookmark"
+            icon="bookmark outline"
+          />
+          <Button disabled={isLike} as="div" labelPosition="right">
+            <Button onClick={() => likePlace(restaurant)} icon inverted>
               <Icon name="thumbs up outline" />
               Like
             </Button>
-            <Label as="a" basic pointing="left">
-              {restaurant.likes}
+            <Label basic pointing="left">
+              {restaurant && restaurant.likedBy && objectLength(restaurant.likedBy)}
             </Label>
           </Button>
         </div>
-        <div className="photos_block">
+        <Link className="photos_block" to={`/restaurant/${restaurant.id}/photos`}>
           <div
             className="images"
             style={{
@@ -41,7 +49,7 @@ const RestaurantDetailedHeader = ({ restaurant }) => {
           >
             <p>Photos</p>
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   );

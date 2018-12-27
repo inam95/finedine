@@ -94,3 +94,47 @@ export const setMainPhoto = photo => async (dispatch, getState, { getFirebase, g
     throw new Error("Problem setting main photo");
   }
 };
+
+export const likePlace = restaurant => async (dispatch, getState, { getFirestore }) => {
+  const firestore = getFirestore();
+  const user = firestore.auth().currentUser;
+  const liked = {
+    like: true,
+    displayName: user.displayName
+  };
+  try {
+    await firestore.update(`restaurants/${restaurant.id}`, {
+      [`likedBy.${user.uid}`]: liked
+    });
+    await firestore.set(`restaurant_likedBy/${restaurant.id}_${user.uid}`, {
+      restaurantId: restaurant.id,
+      userUid: user.uid
+    });
+    toastr.success("Success", "You liked this place");
+  } catch (error) {
+    console.log(error);
+    toastr.error("Oops", "Problem in operation");
+  }
+};
+
+export const bookMarkPlace = restaurant => async (dispatch, getState, { getFirestore }) => {
+  const firestore = getFirestore();
+  const user = firestore.auth().currentUser;
+  const bookmarked = {
+    bookMark: true,
+    displayName: user.displayName
+  };
+  try {
+    await firestore.update(`restaurants/${restaurant.id}`, {
+      [`bookmarkedBy.${user.uid}`]: bookmarked
+    });
+    await firestore.set(`restaurant_bookMarkedBy/${restaurant.id}_${user.uid}`, {
+      restaurantId: restaurant.id,
+      userUid: user.uid
+    });
+    toastr.success("Success", "You bookmarked this place");
+  } catch (error) {
+    console.log(error);
+    toastr.error("Oops", "Problem in operation");
+  }
+};
