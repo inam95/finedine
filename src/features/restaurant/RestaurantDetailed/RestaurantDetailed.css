@@ -10,12 +10,7 @@
 }
 
 .detail-image {
-  background-image: linear-gradient(
-      0deg,
-      rgba(26, 26, 26, 0.5) 15%,
-      rgba(49, 49, 49, 0.6) 15%,
-      rgba(92, 92, 92, 0.6) 15%
-    ),
+  background-image: linear-gradient(0deg, rgba(26, 26, 26, 0.5) 15%, rgba(49, 49, 49, 0.6) 15%, rgba(92, 92, 92, 0.6) 15%),
     url("/assets/bg.jpg");
   filter: brightness(60%) contrast(180%);
   background-position: center;
@@ -84,8 +79,7 @@
   height: 6rem;
   margin: 0 0.4rem;
   border-radius: 10px;
-  background: linear-gradient(rgba(0, 0, 0, 0.336), rgba(0, 0, 0, 0.336)),
-    url("/assets/bg.jpg") no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.336), rgba(0, 0, 0, 0.336)), url("/assets/bg.jpg") no-repeat;
   background-position: center;
   background-size: cover;
   display: grid;

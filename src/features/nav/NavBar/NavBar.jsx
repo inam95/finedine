@@ -40,32 +40,16 @@ class NavBar extends Component {
       <Menu inverted fixed="top">
         <Container>
           <Menu.Item as={Link} to="/" header>
-            <img
-              src="/assets/logo2.png"
-              alt="logo"
-              style={{ height: "3.5rem", width: "3.5rem" }}
-            />
+            <img src="/assets/logo2.png" alt="logo" style={{ height: "3.5rem", width: "3.5rem" }} />
             <h2 className="brand">FineDine</h2>
           </Menu.Item>
           <Menu.Item as={NavLink} to="/restaurants" name="Events" />
           <Menu.Item as={NavLink} to="/test" name="Test" />
-          <Menu.Item>
-            {authenticated && (
-              <Button
-                floated="right"
-                positive
-                inverted
-                content="Create Event"
-              />
-            )}
-          </Menu.Item>
+          <Menu.Item>{authenticated && <Button floated="right" positive inverted content="Create Event" />}</Menu.Item>
           {authenticated ? (
-            <SignedInMenu profile={profile} signOut={this.handleSignOut} />
+            <SignedInMenu profile={profile} auth={auth} signOut={this.handleSignOut} />
           ) : (
-            <SignedOutMenu
-              signIn={this.handleSignIn}
-              register={this.handleRegister}
-            />
+            <SignedOutMenu signIn={this.handleSignIn} register={this.handleRegister} />
           )}
         </Container>
       </Menu>
