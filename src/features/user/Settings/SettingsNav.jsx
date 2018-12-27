@@ -13,19 +13,13 @@ const SettingsNav = () => {
         <Menu.Item as={NavLink} to="/settings/about">
           About Me
         </Menu.Item>
-        <Menu.Item as={NavLink} to="/settings/photos">
+        {/* <Menu.Item as={NavLink} to="/settings/photos">
           My Photos
-        </Menu.Item>
+        </Menu.Item> */}
       </Menu>
       <Grid.Row />
       <Menu vertical>
-        <Header
-          icon="settings"
-          attached
-          inverted
-          color="grey"
-          content="Account"
-        />
+        <Header icon="settings" attached inverted color="grey" content="Account" />
         <Menu.Item as={NavLink} to="/settings/account">
           My Account
         </Menu.Item>

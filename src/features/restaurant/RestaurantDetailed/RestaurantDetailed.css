@@ -193,7 +193,7 @@ p {
 }
 
 .map {
-  background: url(/assets/map.jpg) no-repeat;
+  background: transparent no-repeat;
   background-position: center;
   background-size: cover;
   margin: 2rem 2rem;

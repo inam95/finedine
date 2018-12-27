@@ -5,7 +5,6 @@ import { Switch, Route, Redirect } from "react-router-dom";
 
 import SettingsNav from "./SettingsNav";
 import BasicPage from "./BasicPage";
-import PhotosPage from "./PhotosPage";
 import AboutPage from "./AboutPage";
 import AccountPage from "./AccountPage";
 import { updatePassword } from "../../auth/authActions";
@@ -28,7 +27,7 @@ const SettingsDashboard = ({ updatePassword, providerId, user, updateProfile }) 
         <Switch>
           <Redirect exact from="/settings" to="/settings/basic" />
           <Route path="/settings/basic" render={() => <BasicPage initialValues={user} updateProfile={updateProfile} />} />
-          <Route path="/settings/photos" render={() => <PhotosPage />} />
+          {/* <Route path="/settings/photos" render={() => <PhotosPage />} /> */}
           <Route path="/settings/about" render={() => <AboutPage updateProfile={updateProfile} initialValues={user} />} />
           <Route
             path="/settings/account"

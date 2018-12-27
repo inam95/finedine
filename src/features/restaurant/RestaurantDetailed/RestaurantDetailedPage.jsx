@@ -1,20 +1,18 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withFirestore } from "react-redux-firebase";
+import { toastr } from "react-redux-toastr";
 
 import RestaurantDetailedHeader from "./RestaurantDetailedHeader";
 
 import "./RestaurantDetailed.css";
 import RestaurantDetailedFooter from "./RestaurantDetailedFooter";
 
-const mapState = (state, ownProps) => {
-  const restaurantId = ownProps.match.params.id;
-
+const mapState = state => {
   let restaurant = {};
 
-  if (restaurantId && state.restaurants.length > 0) {
-    restaurant = state.restaurants.filter(
-      restaurant => restaurant.id === restaurantId
-    )[0];
+  if (state.firestore.ordered.restaurants && state.firestore.ordered.restaurants[0]) {
+    restaurant = state.firestore.ordered.restaurants[0];
   }
 
   return {
@@ -22,30 +20,26 @@ const mapState = (state, ownProps) => {
   };
 };
 
-// const restaurant = {
-//   id: "1",
-//   name: "Dinemore",
-//   phone: "085 3535 699",
-//   address: {
-//     city: "Kandy, SL",
-//     street: "Dinemore, 15 George E De Silva Mawatha, Kandy"
-//   },
-//   tbr: true,
-//   avg_cost: 1000,
-//   likes: 150,
-//   cuisines: ["American", "Fast Food"],
-//   additionalInfo: ["Breakfast", "Brunch", "Private Dining Area Available"],
-//   description:
-//     "Grabbing brunch or just stopping by for a drink - 'Dinemore' brings out an exciting, and effervescent vibe to the dining experience."
-// };
+class RestaurantDetailedPage extends Component {
+  async componentDidMount() {
+    const { firestore, match, history } = this.props;
+    let restaurant = await firestore.get(`restaurants/${match.params.id}`);
+    if (!restaurant.exists) {
+      history.push("/restaurants");
+      toastr.error("Sorry", "Event not found");
+    }
+  }
 
-const RestaurantDetailedPage = ({ restaurant }) => {
-  return (
-    <div className="detail-container">
-      <RestaurantDetailedHeader restaurant={restaurant} />
-      <RestaurantDetailedFooter restaurant={restaurant} />
-    </div>
-  );
-};
+  render() {
+    const { restaurant } = this.props;
 
-export default connect(mapState)(RestaurantDetailedPage);
+    return (
+      <div className="detail-container">
+        <RestaurantDetailedHeader restaurant={restaurant} />
+        <RestaurantDetailedFooter restaurant={restaurant} />
+      </div>
+    );
+  }
+}
+
+export default withFirestore(connect(mapState)(RestaurantDetailedPage));

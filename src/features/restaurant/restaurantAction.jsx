@@ -1,24 +1,11 @@
-import { CREATE_RESTAURANT, FETCH_RESTAURANTS } from "./restaurantConstants";
-import {
-  asyncActionError,
-  asyncActionStart,
-  asyncActionFinish
-} from "../async/asyncAction";
+import { FETCH_RESTAURANTS } from "./restaurantConstants";
+import { asyncActionError, asyncActionStart, asyncActionFinish } from "../async/asyncAction";
 import { fetchSampleData } from "../../app/data/mokApi";
 
 export const fetchRestaurants = restaurant => {
   return {
     type: FETCH_RESTAURANTS,
     payload: restaurant
-  };
-};
-
-export const createRestaurant = restaurant => {
-  return {
-    type: CREATE_RESTAURANT,
-    payload: {
-      restaurant
-    }
   };
 };
 

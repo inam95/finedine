@@ -1,10 +1,14 @@
 import React from "react";
 import { Icon } from "semantic-ui-react";
 import GoogleMapReact from "google-map-react";
+import { objectToArray } from "../../../app/common/util/helpers";
 
 const Marker = () => <Icon name="marker" size="big" color="red" />;
 
-const RestaurantDetailedMap = ({ lat, lng }) => {
+const RestaurantDetailedMap = ({ restaurant }) => {
+  const placeLatLng = restaurant && restaurant.placeLatLng && objectToArray(restaurant.placeLatLng);
+  const lat = placeLatLng[0];
+  const lng = placeLatLng[1];
   const center = [lat, lng];
   const zoom = 10;
   return (
