@@ -11,7 +11,14 @@ class RestaurantListItem extends Component {
     return (
       <div className="restaurant-list_item">
         <div className="restaurant-header">
-          <div className="restaurant-image" />
+          <div
+            className="restaurant-image"
+            style={{
+              background: `url(${restaurant.photoURL}) no-repeat`,
+              backgroundPosition: "center",
+              backgroundSize: "cover"
+            }}
+          />
           <div className="restaurant-info">
             <Link to={`/restaurant/${restaurant.id}`}>{restaurant.name}</Link>
             <h5>{restaurant.venue}</h5>

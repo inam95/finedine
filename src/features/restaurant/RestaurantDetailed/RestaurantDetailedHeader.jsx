@@ -6,7 +6,14 @@ import "./RestaurantDetailed.css";
 const RestaurantDetailedHeader = ({ restaurant }) => {
   return (
     <div className="detail-header">
-      <div className="detail-image">
+      <div
+        className="detail-image"
+        style={{
+          backgroundImage: `linear-gradient(0deg, rgba(26, 26, 26, 0.5) 15%, rgba(49, 49, 49, 0.6) 15%, rgba(92, 92, 92, 0.6) 15%), url(${
+            restaurant.photoURL
+          })`
+        }}
+      >
         <div className="restaurant_name">
           <h2>
             {restaurant.name} | {restaurant.city}
@@ -26,7 +33,12 @@ const RestaurantDetailedHeader = ({ restaurant }) => {
           </Button>
         </div>
         <div className="photos_block">
-          <div className="images">
+          <div
+            className="images"
+            style={{
+              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.336), rgba(0, 0, 0, 0.336)), url(${restaurant.photoURL})`
+            }}
+          >
             <p>Photos</p>
           </div>
         </div>
