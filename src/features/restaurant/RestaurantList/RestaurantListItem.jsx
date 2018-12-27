@@ -14,13 +14,9 @@ class RestaurantListItem extends Component {
           <div className="restaurant-image" />
           <div className="restaurant-info">
             <Link to={`/restaurant/${restaurant.id}`}>{restaurant.name}</Link>
-            <h5>{restaurant.address.street}</h5>
+            <h5>{restaurant.venue}</h5>
             <div className="restaurant-rate-block">
-              <Icon
-                name="thumbs up"
-                size="large"
-                style={{ color: "#07a355" }}
-              />
+              <Icon name="thumbs up" size="large" style={{ color: "#07a355" }} />
               <p className="votes">{restaurant.likes} likes</p>
             </div>
           </div>
@@ -30,9 +26,7 @@ class RestaurantListItem extends Component {
           <div>
             <div className="footer-row">
               <p className="label">Cuisines:</p>
-              <p className="desc">
-                {restaurant.cuisines.map(cuisine => cuisine + ", ")}
-              </p>
+              <p className="desc">{restaurant.cuisines.map(cuisine => cuisine + ", ")}</p>
             </div>
             <div className="footer-row">
               <p className="label">Description:</p>

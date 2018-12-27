@@ -1,15 +1,13 @@
 import React from "react";
 import { Icon } from "semantic-ui-react";
 import GoogleMapReact from "google-map-react";
-import { objectToArray } from "../../../app/common/util/helpers";
 
 const Marker = () => <Icon name="marker" size="big" color="red" />;
 
 const RestaurantDetailedMap = ({ restaurant }) => {
-  const placeLatLng = restaurant && restaurant.placeLatLng && objectToArray(restaurant.placeLatLng);
-  const lat = placeLatLng[0];
-  const lng = placeLatLng[1];
-  const center = [lat, lng];
+  // const lat = placeLatLng[0];
+  // const lng = placeLatLng[1];
+  const center = [7, 8];
   const zoom = 10;
   return (
     <React.Fragment>
@@ -20,7 +18,7 @@ const RestaurantDetailedMap = ({ restaurant }) => {
         defaultCenter={center}
         defaultZoom={zoom}
       >
-        <Marker lat={lat} lng={lng} />
+        <Marker lat={7} lng={8} />
       </GoogleMapReact>
     </React.Fragment>
   );

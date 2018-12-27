@@ -34,7 +34,7 @@ const Overview = ({ restaurant }) => {
         </div>
         <div className="address">
           <h2>Address</h2>
-          <p>{restaurant.address.street}</p>
+          <p>{restaurant.venue}</p>
         </div>
       </div>
       <div className="block">

@@ -1,17 +1,15 @@
 import React from "react";
 import { Button, Label, Icon } from "semantic-ui-react";
-import { objectToArray } from "../../../app/common/util/helpers";
 
 import "./RestaurantDetailed.css";
 
 const RestaurantDetailedHeader = ({ restaurant }) => {
-  const address = restaurant && restaurant.address && objectToArray(restaurant.address);
   return (
     <div className="detail-header">
       <div className="detail-image">
         <div className="restaurant_name">
           <h2>
-            {restaurant.name} | {address[0]}
+            {restaurant.name} | {restaurant.city}
           </h2>
         </div>
         {/* <div className="restaurant-rate_block" /> */}
