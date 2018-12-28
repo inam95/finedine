@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Menu, Container, Button } from "semantic-ui-react";
+import { Menu, Container } from "semantic-ui-react";
 import { NavLink, Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { withFirebase } from "react-redux-firebase";
@@ -43,9 +43,17 @@ class NavBar extends Component {
             <img src="/assets/logo2.png" alt="logo" style={{ height: "3.5rem", width: "3.5rem" }} />
             <h2 className="brand">FineDine</h2>
           </Menu.Item>
-          <Menu.Item as={NavLink} to="/restaurants" name="Events" />
-          <Menu.Item as={NavLink} to="/test" name="Test" />
-          <Menu.Item>{authenticated && <Button floated="right" positive inverted content="Create Event" />}</Menu.Item>
+          <Menu.Item as={NavLink} to="/restaurants" name="All Restaurants" />
+          {/* <Menu.Item as={NavLink} to="/test" name="Test" /> */}
+          {/* <Menu.Item>{authenticated && <Button floated="right" positive inverted content="Create Event" />}</Menu.Item> */}
+          {/* <Menu.item>
+            <Form size="large">
+              <Segment>
+                <Field name="email" component={TextInput} type="text" placeholder="Email Address" />
+                <Field name="password" component={TextInput} type="password" placeholder="password" />
+              </Segment>
+            </Form>
+          </Menu.item> */}
           {authenticated ? (
             <SignedInMenu profile={profile} auth={auth} signOut={this.handleSignOut} />
           ) : (

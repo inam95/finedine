@@ -1,9 +1,9 @@
 .restaurant-list {
-  position: absolute;
+  position: relative;
   left: 50%;
   transform: translateX(-50%);
   width: 60%;
-  margin: 0;
+  margin-bottom: 2rem;
 }
 
 .restaurant-list_item {
@@ -17,6 +17,9 @@
 }
 
 .restaurant-header {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   position: relative;
   display: flex;
   margin: 1.5rem 2rem 0 2rem;

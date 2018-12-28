@@ -2,6 +2,7 @@ import moment from "moment";
 import cuid from "cuid";
 import { asyncActionStart, asyncActionFinish, asyncActionError } from "../async/asyncAction";
 import { toastr } from "react-redux-toastr";
+import firebase from "../../app/config/firebase";
 
 export const updateProfile = user => async (dispatch, getState, { getFirebase }) => {
   const firebase = getFirebase();
@@ -28,7 +29,7 @@ export const uploadProfileImage = (file, fileName) => async (dispatch, getState,
   };
 
   try {
-    dispatch(asyncActionStart);
+    dispatch(asyncActionStart());
     //upload the file to firebase storage
     let uploadedFile = await firebase.uploadFile(path, file, null, options);
     //get ulr of Image
@@ -58,10 +59,10 @@ export const uploadProfileImage = (file, fileName) => async (dispatch, getState,
         url: downloadURL
       }
     );
-    dispatch(asyncActionFinish);
+    dispatch(asyncActionFinish());
   } catch (error) {
     console.log(error);
-    dispatch(asyncActionError);
+    dispatch(asyncActionError());
     throw new Error("Problem uploading photo");
   }
 };
@@ -136,5 +137,20 @@ export const bookMarkPlace = restaurant => async (dispatch, getState, { getFires
   } catch (error) {
     console.log(error);
     toastr.error("Oops", "Problem in operation");
+  }
+};
+
+export const getUserLikes = userUid => async (dispatch, getState) => {
+  dispatch(asyncActionStart());
+  const firestore = firebase.firestore();
+  const restaurantsRef = firestore.collection("restaurant_likedBy");
+  let query = restaurantsRef.where("userUid", "==", userUid);
+  try {
+    let querySnap = await query.get();
+    console.log(querySnap);
+    dispatch(asyncActionFinish());
+  } catch (error) {
+    console.log(error);
+    dispatch(asyncActionError());
   }
 };
