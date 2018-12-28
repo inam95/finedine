@@ -11,9 +11,8 @@ const RestaurantDetailedHeader = ({ restaurant, isLike, likePlace, isBookmarked,
       <div
         className="detail-image"
         style={{
-          backgroundImage: `linear-gradient(0deg, rgba(26, 26, 26, 0.5) 15%, rgba(49, 49, 49, 0.6) 15%, rgba(92, 92, 92, 0.6) 15%), url(${
-            restaurant.photoURL
-          })`
+          backgroundImage: `linear-gradient(0deg, rgba(26, 26, 26, 0.5) 15%, rgba(49, 49, 49, 0.6) 15%, rgba(92, 92, 92, 0.6) 15%), url(${restaurant.photoURL ||
+            "/assets/bg.jpg"})`
         }}
       >
         <div className="restaurant_name">
@@ -44,7 +43,8 @@ const RestaurantDetailedHeader = ({ restaurant, isLike, likePlace, isBookmarked,
           <div
             className="images"
             style={{
-              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.336), rgba(0, 0, 0, 0.336)), url(${restaurant.photoURL})`
+              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.336), rgba(0, 0, 0, 0.336)), url(${restaurant.photoURL ||
+                "/assets/bg.jpg"})`
             }}
           >
             <p>Photos</p>

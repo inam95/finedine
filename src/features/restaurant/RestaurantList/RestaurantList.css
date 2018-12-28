@@ -65,10 +65,9 @@
 
 .restaurant-footer {
   position: relative;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto auto;
   margin: 0 2rem 1.5rem 2rem;
-  align-items: flex-start;
 }
 
 .restaurant-footer .footer-row {

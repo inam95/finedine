@@ -15,7 +15,7 @@ class RestaurantListItem extends Component {
           <div
             className="restaurant-image"
             style={{
-              background: `url(${restaurant.photoURL}) no-repeat`,
+              background: `url(${restaurant.photoURL || "/assets/bg.jpg"}) no-repeat`,
               backgroundPosition: "center",
               backgroundSize: "cover"
             }}
@@ -25,21 +25,19 @@ class RestaurantListItem extends Component {
             <h5>{restaurant.venue}</h5>
             <div className="restaurant-rate-block">
               <Icon name="thumbs up" size="large" style={{ color: "#07a355" }} />
-              <p className="votes">{restaurant && restaurant.likedBy && objectLength(restaurant.likedBy)} likes</p>
+              <p className="votes">{(restaurant && restaurant.likedBy && objectLength(restaurant.likedBy)) || 0} likes</p>
             </div>
           </div>
         </div>
         <hr />
         <div className="restaurant-footer">
-          <div>
-            <div className="footer-row">
-              <p className="label">Cuisines:</p>
-              <p className="desc">{restaurant.cuisines.map(cuisine => cuisine + ", ")}</p>
-            </div>
-            <div className="footer-row">
-              <p className="label">Description:</p>
-              <p className="desc">{restaurant.description}</p>
-            </div>
+          <div className="footer-row">
+            <p className="label">Cuisines:</p>
+            <p className="desc">{restaurant.cuisines.map(cuisine => cuisine + ", ")}</p>
+          </div>
+          <div className="footer-row">
+            <p className="label">Description:</p>
+            <p className="desc">{(restaurant && restaurant.description) || "-----"}</p>
           </div>
         </div>
       </div>

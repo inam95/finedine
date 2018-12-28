@@ -16,7 +16,7 @@ class UserDetailedPage extends Component {
   render() {
     const { profile, requesting } = this.props;
     const loading = Object.values(requesting).some(a => a === true);
-    if (loading) return <LoadingComponent />;
+    if (loading) return <LoadingComponent inverted={true} />;
     return (
       <Grid>
         <UserDetailedHeader profile={profile} />

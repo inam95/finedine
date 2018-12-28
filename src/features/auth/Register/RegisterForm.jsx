@@ -4,11 +4,12 @@ import { combineValidators, isRequired } from "revalidate";
 import { Form, Segment, Button, Label, Divider } from "semantic-ui-react";
 import { Field, reduxForm } from "redux-form";
 import TextInput from "../../../app/common/form/TextInput";
-import { registerUser } from "../authActions";
+import { registerUser, socialLogin } from "../authActions";
 import SocialLogin from "../SocialLogin/SocialLogin";
 
 const actions = {
-  registerUser
+  registerUser,
+  socialLogin
 };
 
 const validate = combineValidators({
@@ -17,50 +18,24 @@ const validate = combineValidators({
   password: isRequired("password")
 });
 
-const RegisterForm = ({
-  handleSubmit,
-  registerUser,
-  error,
-  invalid,
-  submitting
-}) => {
+const RegisterForm = ({ handleSubmit, registerUser, error, invalid, submitting }) => {
   return (
     <div>
       <Form size="large" onSubmit={handleSubmit(registerUser)}>
         <Segment>
-          <Field
-            name="displayName"
-            type="text"
-            component={TextInput}
-            placeholder="Known As"
-          />
-          <Field
-            name="email"
-            type="text"
-            component={TextInput}
-            placeholder="Email"
-          />
-          <Field
-            name="password"
-            type="password"
-            component={TextInput}
-            placeholder="Password"
-          />
+          <Field name="displayName" type="text" component={TextInput} placeholder="Known As" />
+          <Field name="email" type="text" component={TextInput} placeholder="Email" />
+          <Field name="password" type="password" component={TextInput} placeholder="Password" />
           {error && (
             <Label basic color="red">
               {error}
             </Label>
           )}
-          <Button
-            disabled={invalid || submitting}
-            fluid
-            size="large"
-            color="teal"
-          >
+          <Button disabled={invalid || submitting} fluid size="large" color="teal">
             Register
           </Button>
           <Divider horizontal>or</Divider>
-          <SocialLogin />
+          <SocialLogin socialLogin={socialLogin} />
         </Segment>
       </Form>
     </div>
