@@ -1,19 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { firestoreConnect } from "react-redux-firebase";
+import { firestoreConnect, isLoaded, isEmpty } from "react-redux-firebase";
 
 import RestaurantList from "../RestaurantList/RestaurantList";
 import LoadingComponent from "../../../app/layout/LoadingComponent";
 
 const mapState = state => ({
-  restaurants: state.firestore.ordered.restaurants,
-  loading: state.async.loading
+  restaurants: state.firestore.ordered.restaurants
 });
 
 class RestaurantDashboard extends Component {
   render() {
-    const { restaurants, loading } = this.props;
-    if (loading) return <LoadingComponent inverted />;
+    const { restaurants } = this.props;
+    if (!isLoaded(restaurants || isEmpty(restaurants))) return <LoadingComponent inverted />;
     return (
       <div className="container">
         <RestaurantList restaurants={restaurants} />
@@ -22,6 +21,4 @@ class RestaurantDashboard extends Component {
   }
 }
 
-export default connect(mapState)(
-  firestoreConnect([{ collection: "restaurants" }])(RestaurantDashboard)
-);
+export default connect(mapState)(firestoreConnect([{ collection: "restaurants" }])(RestaurantDashboard));
