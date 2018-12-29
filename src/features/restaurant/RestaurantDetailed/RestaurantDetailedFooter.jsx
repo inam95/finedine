@@ -5,7 +5,7 @@ import RestaurantDetailedNav from "./RestaurantDetailedNav/RestaurantDetailedNav
 import "./RestaurantDetailed.css";
 import RestaurantDetailedMap from "./RestaurantDetailedMap";
 
-const RestaurantDetailedFooter = ({ restaurant, addReviews, restaurantChat, authenticated }) => {
+const RestaurantDetailedFooter = ({ restaurant, addReviews, restaurantChat, authenticated, openModal }) => {
   return (
     <div className="detail-footer">
       <div className="detail_info">
@@ -14,6 +14,7 @@ const RestaurantDetailedFooter = ({ restaurant, addReviews, restaurantChat, auth
           addReviews={addReviews}
           restaurantChat={restaurantChat}
           authenticated={authenticated}
+          openModal={openModal}
         />
         <div className="map">
           {restaurant.placeLatLng && (

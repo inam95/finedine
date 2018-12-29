@@ -13,10 +13,12 @@ class ChatForm extends Component {
     }
   };
   render() {
+    const { parentId } = this.props;
+
     return (
       <Form onSubmit={this.props.handleSubmit(this.handleReviewSubmit)}>
         <Field name="review" rows={2} type="text" component={TextArea} />
-        <Button content="Add Reply" labelPosition="left" icon="edit" primary />
+        <Button content={parentId === 0 ? "Add Review" : "Add Reply"} labelPosition="left" icon="edit" primary />
       </Form>
     );
   }

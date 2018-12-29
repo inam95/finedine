@@ -7,7 +7,7 @@ import Menu from "./Menu";
 
 import "../RestaurantDetailed.css";
 
-const RestaurantDetailedDashboard = ({ restaurant, addReviews, restaurantChat, authenticated }) => {
+const RestaurantDetailedDashboard = ({ restaurant, addReviews, restaurantChat, authenticated, openModal }) => {
   return (
     <Switch>
       <Redirect exact from={`/restaurant/${restaurant.id}`} to={`/restaurant/${restaurant.id}/overview`} />
@@ -16,14 +16,7 @@ const RestaurantDetailedDashboard = ({ restaurant, addReviews, restaurantChat, a
 
       <Route
         path={`/restaurant/${restaurant.id}/reviews`}
-        render={() => (
-          <Reviews
-            addReviews={addReviews}
-            restaurantId={restaurant.id}
-            restaurantChat={restaurantChat}
-            authenticated={authenticated}
-          />
-        )}
+        render={() => <Reviews addReviews={addReviews} restaurantId={restaurant.id} restaurantChat={restaurantChat} />}
       />
 
       <Route path={`/restaurant/${restaurant.id}/menu`} component={Menu} />
