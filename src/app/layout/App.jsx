@@ -8,8 +8,9 @@ import RestaurantDashboard from "../../features/restaurant/RestaurantDashboard/R
 import RestaurantDetailedPage from "../../features/restaurant/RestaurantDetailed/RestaurantDetailedPage";
 import UserDetailedPage from "../../features/user/UserDetailedPage/UserDetailedPage";
 import SettingsDashboard from "../../features/user/Settings/SettingsDashboard";
-import TestComponent from "../../features/testarea/TestComponent";
+// import TestComponent from "../../features/testarea/TestComponent";
 import ModalManager from "../../features/modals/ModalManager";
+// import { UserIsAuthenticated } from "../../features/auth/authWrapper";
 
 class App extends Component {
   render() {
@@ -28,7 +29,7 @@ class App extends Component {
               <Container className="main">
                 <Switch>
                   <Route path="/restaurants" component={RestaurantDashboard} />
-                  <Route path="/test" component={TestComponent} />
+                  {/* <Route path="/test" component={TestComponent} /> */}
                   <Route path="/restaurant/:id" component={RestaurantDetailedPage} />
                   <Route path="/profile" component={UserDetailedPage} />
                   {/* <Route path="/restaurant/:id/photos" component={PhotosPage} /> */}

@@ -25,7 +25,7 @@ class Reviews extends Component {
   };
 
   render() {
-    const { addReviews, restaurantId, restaurantChat } = this.props;
+    const { addReviews, restaurantId, restaurantChat, authenticated } = this.props;
     const { showReplyForm, selectedReviewId } = this.state;
     return (
       <div>

@@ -70,6 +70,31 @@ export const getRestaurantsForDashboard = lastRestaurant => async (dispatch, get
   }
 };
 
+export const getRestaurantsByCity = city => async (dispatch, getState) => {
+  const firestore = firebase.firestore();
+  const restaurantsRef = firestore.collection("restaurants");
+  const restaurantQuery = restaurantsRef.where("city", "==", city);
+  // console.log(restaurantQuery);
+  try {
+    dispatch(asyncActionStart());
+    let querySnap = await restaurantQuery.get();
+    if (querySnap.docs.length === 0) {
+      dispatch(asyncActionFinish());
+      return querySnap;
+    }
+    let restaurants = [];
+    for (let i = 0; i < querySnap.docs.length; i++) {
+      let restaurant = { ...querySnap.docs[i].data(), id: querySnap.docs[i].id };
+      restaurants.push(restaurant);
+    }
+    dispatch({ type: FETCH_RESTAURANTS, payload: { restaurants } });
+    dispatch(asyncActionFinish());
+  } catch (error) {
+    console.log(error);
+    dispatch(asyncActionError());
+  }
+};
+
 export const addReviews = (restaurantId, values, parentId) => async (dispatch, getState, { getFirebase }) => {
   const firebase = getFirebase();
   const profile = getState().firebase.profile;

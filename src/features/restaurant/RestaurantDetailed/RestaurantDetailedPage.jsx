@@ -10,6 +10,7 @@ import RestaurantDetailedFooter from "./RestaurantDetailedFooter";
 import { objectToArray, createDataTree } from "../../../app/common/util/helpers";
 import { likePlace, bookMarkPlace } from "../../user/userActions";
 import { addReviews } from "../restaurantAction";
+import { openModal } from "../../modals/modalActions";
 
 const mapState = (state, ownProps) => {
   let restaurant = {};
@@ -30,7 +31,8 @@ const mapState = (state, ownProps) => {
 const actions = {
   likePlace,
   bookMarkPlace,
-  addReviews
+  addReviews,
+  openModal
 };
 
 class RestaurantDetailedPage extends Component {
@@ -49,7 +51,7 @@ class RestaurantDetailedPage extends Component {
   }
 
   render() {
-    const { restaurant, auth, likePlace, bookMarkPlace, addReviews, restaurantChat } = this.props;
+    const { openModal, restaurant, auth, likePlace, bookMarkPlace, addReviews, restaurantChat } = this.props;
 
     const placeLatLng = restaurant && restaurant.placeLatLng && objectToArray(restaurant.placeLatLng);
 
@@ -60,6 +62,8 @@ class RestaurantDetailedPage extends Component {
     const isBookmarked = bookmarkedBy && bookmarkedBy.some(b => b.id === auth.id);
 
     const chatTree = !isEmpty(restaurantChat) && createDataTree(restaurantChat);
+
+    const authenticated = auth.isLoaded && !auth.isEmpty;
 
     // const whoBookMarked = restaurant && restaurant.whoBookMarked && objectToArray(restaurant.whoBookMarked);
     // const isBookMark = whoBookMarked && whoBookMarked.some(w => w.id === auth.id);
@@ -73,12 +77,16 @@ class RestaurantDetailedPage extends Component {
           likePlace={likePlace}
           isBookmarked={isBookmarked}
           bookMarkPlace={bookMarkPlace}
+          authenticated={authenticated}
+          openModal={openModal}
         />
         <RestaurantDetailedFooter
           restaurant={restaurant}
           placeLatLng={placeLatLng}
           addReviews={addReviews}
           restaurantChat={chatTree}
+          authenticated={authenticated}
+          openModal={openModal}
         />
       </div>
     );

@@ -3,28 +3,23 @@ import { connect } from "react-redux";
 import { Form, Segment, Button } from "semantic-ui-react";
 import { Field, reduxForm } from "redux-form";
 import PlaceInput from "../../../app/common/form/PlaceInput";
-import { getRestaurantsForDashboard } from "../restaurantAction";
+import { getRestaurantsByCity } from "../restaurantAction";
 
 const actions = {
-  getRestaurantsForDashboard
+  getRestaurantsByCity
 };
 
 class SearchBar extends Component {
-  state = {
-    city: ""
-  };
-
-  onSubmit = e => {
-    e.preventDefault();
-    let val = this.refs.value;
-    this.setState({
-      city: val
-    });
+  onSubmit = values => {
+    const { getRestaurantsByCity, reset } = this.props;
+    console.log(values.city);
+    getRestaurantsByCity(values.city);
+    reset();
   };
 
   render() {
     return (
-      <Form size="small">
+      <Form onSubmit={this.props.handleSubmit(this.onSubmit)}>
         <Segment style={{ display: "flex" }}>
           <Field
             ref="city"

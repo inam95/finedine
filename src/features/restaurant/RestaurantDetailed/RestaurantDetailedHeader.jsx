@@ -4,8 +4,17 @@ import { Link } from "react-router-dom";
 
 import "./RestaurantDetailed.css";
 import { objectLength } from "../../../app/common/util/helpers";
+import { openModal } from "../../modals/modalActions";
 
-const RestaurantDetailedHeader = ({ restaurant, isLike, likePlace, isBookmarked, bookMarkPlace }) => {
+const RestaurantDetailedHeader = ({
+  restaurant,
+  isLike,
+  likePlace,
+  isBookmarked,
+  bookMarkPlace,
+  authenticated,
+  openModal
+}) => {
   return (
     <div className="detail-header">
       <div
@@ -21,6 +30,7 @@ const RestaurantDetailedHeader = ({ restaurant, isLike, likePlace, isBookmarked,
           </h2>
         </div>
         {/* <div className="restaurant-rate_block" /> */}
+
         <div className="action_block">
           <Button
             onClick={() => bookMarkPlace(restaurant)}
@@ -29,15 +39,40 @@ const RestaurantDetailedHeader = ({ restaurant, isLike, likePlace, isBookmarked,
             content="Bookmark"
             icon="bookmark outline"
           />
-          <Button disabled={isLike} as="div" labelPosition="right">
-            <Button onClick={() => likePlace(restaurant)} icon inverted>
-              <Icon name="thumbs up outline" />
-              Like
+
+          {isLike && authenticated && (
+            <Button
+              onClick={() => bookMarkPlace(restaurant)}
+              disabled={true}
+              inverted
+              content={restaurant && restaurant.likedBy && objectLength(restaurant.likedBy)}
+              icon="thumbs up outline"
+            />
+          )}
+
+          {!isLike && authenticated && (
+            <Button as="div" labelPosition="right">
+              <Button onClick={() => likePlace(restaurant)} icon inverted>
+                <Icon name="thumbs up outline" />
+                Like
+              </Button>
+              <Label basic pointing="left">
+                {restaurant && restaurant.likedBy && objectLength(restaurant.likedBy)}
+              </Label>
             </Button>
-            <Label basic pointing="left">
-              {restaurant && restaurant.likedBy && objectLength(restaurant.likedBy)}
-            </Label>
-          </Button>
+          )}
+
+          {!authenticated && (
+            <Button as="div" labelPosition="right">
+              <Button onClick={() => openModal("UnauthModal")} icon inverted>
+                <Icon name="thumbs up outline" />
+                Like
+              </Button>
+              <Label basic pointing="left">
+                {restaurant && restaurant.likedBy && objectLength(restaurant.likedBy)}
+              </Label>
+            </Button>
+          )}
         </div>
         <Link className="photos_block" to={`/restaurant/${restaurant.id}/photos`}>
           <div
