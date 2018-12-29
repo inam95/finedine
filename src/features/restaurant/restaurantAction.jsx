@@ -1,6 +1,7 @@
 import { FETCH_RESTAURANTS } from "./restaurantConstants";
 import { asyncActionError, asyncActionStart, asyncActionFinish } from "../async/asyncAction";
 import firebase from "../../app/config/firebase";
+import { toastr } from "react-redux-toastr";
 
 // export const fetchRestaurants = restaurant => {
 //   return {
@@ -66,5 +67,25 @@ export const getRestaurantsForDashboard = lastRestaurant => async (dispatch, get
   } catch (error) {
     console.log(error);
     dispatch(asyncActionError());
+  }
+};
+
+export const addReviews = (restaurantId, values, parentId) => async (dispatch, getState, { getFirebase }) => {
+  const firebase = getFirebase();
+  const profile = getState().firebase.profile;
+  const user = firebase.auth().currentUser;
+  let newReview = {
+    parentId: parentId,
+    displayName: profile.displayName,
+    photoURL: profile.photoURL || "/assets/user.png",
+    uid: user.uid,
+    text: values.review,
+    date: Date.now()
+  };
+  try {
+    await firebase.push(`restaurant_chat/${restaurantId}`, newReview);
+  } catch (error) {
+    console.log(error);
+    toastr.error("Oops", "Problem adding Review");
   }
 };

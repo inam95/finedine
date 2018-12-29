@@ -5,7 +5,7 @@ import RestaurantDetailedDashboard from "./RestaurantDetailedDashboard";
 
 import "../RestaurantDetailed.css";
 
-const RestaurantDetailedNav = ({ restaurant }) => {
+const RestaurantDetailedNav = ({ restaurant, addReviews, restaurantChat }) => {
   return (
     <div className="detail-navbar">
       <nav>
@@ -21,7 +21,7 @@ const RestaurantDetailedNav = ({ restaurant }) => {
           </li>
         </ul>
       </nav>
-      <RestaurantDetailedDashboard restaurant={restaurant} />
+      <RestaurantDetailedDashboard restaurant={restaurant} addReviews={addReviews} restaurantChat={restaurantChat} />
     </div>
   );
 };

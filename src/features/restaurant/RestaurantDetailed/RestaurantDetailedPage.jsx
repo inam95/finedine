@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withFirestore } from "react-redux-firebase";
+import { withFirestore, firebaseConnect, isEmpty } from "react-redux-firebase";
+import { compose } from "redux";
 
 import RestaurantDetailedHeader from "./RestaurantDetailedHeader";
 
 import "./RestaurantDetailed.css";
 import RestaurantDetailedFooter from "./RestaurantDetailedFooter";
-import { objectToArray } from "../../../app/common/util/helpers";
+import { objectToArray, createDataTree } from "../../../app/common/util/helpers";
 import { likePlace, bookMarkPlace } from "../../user/userActions";
+import { addReviews } from "../restaurantAction";
 
-const mapState = state => {
+const mapState = (state, ownProps) => {
   let restaurant = {};
 
   if (state.firestore.ordered.restaurants && state.firestore.ordered.restaurants[0]) {
@@ -18,13 +20,17 @@ const mapState = state => {
 
   return {
     restaurant,
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    restaurantChat:
+      !isEmpty(state.firebase.data.restaurant_chat) &&
+      objectToArray(state.firebase.data.restaurant_chat[ownProps.match.params.id])
   };
 };
 
 const actions = {
   likePlace,
-  bookMarkPlace
+  bookMarkPlace,
+  addReviews
 };
 
 class RestaurantDetailedPage extends Component {
@@ -43,7 +49,7 @@ class RestaurantDetailedPage extends Component {
   }
 
   render() {
-    const { restaurant, auth, likePlace, bookMarkPlace } = this.props;
+    const { restaurant, auth, likePlace, bookMarkPlace, addReviews, restaurantChat } = this.props;
 
     const placeLatLng = restaurant && restaurant.placeLatLng && objectToArray(restaurant.placeLatLng);
 
@@ -52,6 +58,8 @@ class RestaurantDetailedPage extends Component {
 
     const bookmarkedBy = restaurant && restaurant.bookmarkedBy && objectToArray(restaurant.bookmarkedBy);
     const isBookmarked = bookmarkedBy && bookmarkedBy.some(b => b.id === auth.id);
+
+    const chatTree = !isEmpty(restaurantChat) && createDataTree(restaurantChat);
 
     // const whoBookMarked = restaurant && restaurant.whoBookMarked && objectToArray(restaurant.whoBookMarked);
     // const isBookMark = whoBookMarked && whoBookMarked.some(w => w.id === auth.id);
@@ -66,15 +74,22 @@ class RestaurantDetailedPage extends Component {
           isBookmarked={isBookmarked}
           bookMarkPlace={bookMarkPlace}
         />
-        <RestaurantDetailedFooter restaurant={restaurant} placeLatLng={placeLatLng} />
+        <RestaurantDetailedFooter
+          restaurant={restaurant}
+          placeLatLng={placeLatLng}
+          addReviews={addReviews}
+          restaurantChat={chatTree}
+        />
       </div>
     );
   }
 }
 
-export default withFirestore(
+export default compose(
+  withFirestore,
   connect(
     mapState,
     actions
-  )(RestaurantDetailedPage)
-);
+  ),
+  firebaseConnect(props => [`restaurant_chat/${props.match.params.id}`])
+)(RestaurantDetailedPage);
