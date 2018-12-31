@@ -7,7 +7,6 @@ import SettingsNav from "./SettingsNav";
 import BasicPage from "./BasicPage";
 import AboutPage from "./AboutPage";
 import AccountPage from "./AccountPage";
-import PhotosPage from "./PhotosPage";
 import { updatePassword } from "../../auth/authActions";
 import { updateProfile } from "../userActions";
 
@@ -28,7 +27,7 @@ const SettingsDashboard = ({ updatePassword, providerId, user, updateProfile }) 
         <Switch>
           <Redirect exact from="/settings" to="/settings/basic" />
           <Route path="/settings/basic" render={() => <BasicPage initialValues={user} updateProfile={updateProfile} />} />
-          <Route path="/settings/photos" render={() => <PhotosPage />} />
+          {/* <Route path="/settings/photos" render={() => <PhotosPage />} /> */}
           <Route path="/settings/about" render={() => <AboutPage updateProfile={updateProfile} initialValues={user} />} />
           <Route
             path="/settings/account"

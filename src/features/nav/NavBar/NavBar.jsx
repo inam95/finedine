@@ -44,7 +44,7 @@ class NavBar extends Component {
             <h2 className="brand">FineDine</h2>
           </Menu.Item>
           <Menu.Item as={NavLink} to="/restaurants" name="All Restaurants" />
-          <Menu.Item as={NavLink} to="/test" name="Test" />
+          {/* <Menu.Item as={NavLink} to="/test" name="Test" /> */}
           {/* <Menu.Item>{authenticated && <Button floated="right" positive inverted content="Create Event" />}</Menu.Item> */}
           {/* <Menu.item>
             <Form size="large">

@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 import "./RestaurantDetailed.css";
 import { objectLength } from "../../../app/common/util/helpers";
-import { openModal } from "../../modals/modalActions";
 
 const RestaurantDetailedHeader = ({
   restaurant,
